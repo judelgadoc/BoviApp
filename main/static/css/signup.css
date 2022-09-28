@@ -1,0 +1,10 @@
+html,body {
+    height:100%;
+    background: rgb(242,203,87);
+    background: linear-gradient(90deg, rgba(242,203,87,1) 38%, rgba(246,222,116,1) 100%);
+}
+
+.btn-primary {
+    background-color: #261901;
+}
+
