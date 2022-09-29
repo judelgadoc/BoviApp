@@ -22,7 +22,7 @@ def signup(request):
                     first_name=request.POST['inputFirstName'],
                     last_name=request.POST['inputLastName'],
                     email=request.POST['inputEmail'],
-                    password=make_password(request.POST['inputPassword'])
+                    password=request.POST['inputPassword']
         )
         user.save()
         usuario = Usuario(user=user,
