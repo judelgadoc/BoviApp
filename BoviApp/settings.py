@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nr2j^o2irn(8oa3en(%$0$k58_qifn%^aiuvq3%$vey=(j+f@n'
+#SECRET_KEY = 'django-insecure-nr2j^o2irn(8oa3en(%$0$k58_qifn%^aiuvq3%$vey=(j+f@n'
+with open('/home/ubuntu/BoviApp/DJANGO_SECRET_KEY') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["ec2-35-174-15-26.compute-1.amazonaws.com", "35.174.15.26"]
 
 
 # Application definition
@@ -74,12 +77,16 @@ WSGI_APPLICATION = 'BoviApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+with open('/home/ubuntu/BoviApp/DB_PASSWORD') as f:
+    DB_PASSWORD = f.read().strip()
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'boviappdb',
         'USER': 'admin',
-        'PASSWORD': 'ingesoft2_2022-02',
+        'PASSWORD': DB_PASSWORD,
         'HOST': 'boviappdb.cnv96mbiiojo.us-east-1.rds.amazonaws.com',
         'PORT': 3306
     }
@@ -121,6 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
