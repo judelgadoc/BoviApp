@@ -10,37 +10,31 @@
 {% block content %}
 <div class="d-flex flex-column align-items-center justify-content-center" style="height: 90%;">
     <h1 class="p-4">¡Regístrate!</h1>
-    <form action = "{% url 'signup' %}" method = "POST" >
+    <form action = "{% url 'signup' %}" method = "POST" style="width: 25%;">
         {% csrf_token %}
         <div class="form-group">
-            <label>Nombres
-            <input type="text" class="form-control" name="inputFirstName" placeholder="Pepito">
-            </label>
+            <label for="idFirstName">Nombres</label>
+            <input type="text" class="form-control" id="idFirstName" name="inputFirstName" placeholder="Pepito" aria-describedby="help">
         </div>
         <div class="form-group">
-            <label>Apellidos
-            <input type="text" class="form-control" name="inputLastName" placeholder="Pérez">
-            </label>
+            <label for="idLastName">Apellidos</label>
+            <input type="text" class="form-control" id="idLastName" name="inputLastName" placeholder="Pérez" aria-describedby="help">
         </div>
         <div class="form-group">
-            <label>Correo Electrónico
-            <input type="email" class="form-control" name="inputEmail" placeholder="pepitop100@ejemplo.com">
-            </label>
+            <label for="idEmail">Correo Electrónico</label>
+            <input type="email" class="form-control" id="idEmail" name="inputEmail" placeholder="pepitop100@ejemplo.com" aria-describedby="help">
         </div>
         <div class="form-group">
-            <label>Contraseña
-            <input type="password" class="form-control" name="inputPassword" placeholder="***************">
-            </label>
+            <label for="idPassword">Contraseña</label>
+            <input type="password" class="form-control" id="idPassword" name="inputPassword" placeholder="***************" aria-describedby="help">
         </div>
         <div class="form-group">
-            <label>Teléfono
-            <input type="text" class="form-control" name="inputPhone" placeholder="3130000000">
-            </label>
+            <label for="idPhone">Teléfono</label>
+            <input type="text" class="form-control" id="idPhone" name="inputPhone" placeholder="3130000000" aria-describedby="help">
         </div>
         <div class="form-group">
-            <label>Dirección
-            <input type="text" class="form-control" name="inputAddress" placeholder="Cra 0 # 0 - 45, XX, YY">
-            </label>
+            <label id="idAddress">Dirección</label>
+            <input type="text" class="form-control" id="idAddress" name="inputAddress" placeholder="Cra 0 # 0 - 45, XX, YY" aria-describedby="help">
         </div>
         <div>
             <h6>Soy:</h6>
@@ -50,7 +44,7 @@
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inputType" id="personaX-id" value="2" />
-                <label class="form-check-label" for="personaX-id">Persona X</label>
+                <label class="form-check-label" for="personaX-id">Persona común</label>
             </div>
         </div>
         <br>
