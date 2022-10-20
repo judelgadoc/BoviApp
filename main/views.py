@@ -46,3 +46,17 @@ def signup(request):
         usuario.save()
         return HttpResponseRedirect('/main/') ## Aquí va el index
     return render(request, 'main/signup.html', {'temp': 1})
+
+
+def new_cattle(request):
+    if request.method == "POST":
+        vaquita = CabezaGanado(customer_name=request.POST['inputCustomerName'],
+                               peso_kg=float(request.POST['inputWeight']),
+                               fecha_nacimiento=request.POST['inputBirthdate'],
+                               tipo=TipoGanado.objects.get(pk=int(request.POST['inputType'])),
+                               raza=RazaGanado.objects.get(pk=int(request.POST['inputBreed'])))
+        vaquita.save()
+    breeds = RazaGanado.objects.all()
+    cow_types = TipoGanado.objects.all()
+    context = {'breeds': breeds, 'cow_types': cow_types}
+    return render(request, 'main/new_cattle.html', context)

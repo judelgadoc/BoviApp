@@ -40,12 +40,12 @@
                         </div>
                         <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="recuerdame">
-                        <label class="form-check-label" for="recuerdame">Recuerdame</label>
+                        <label class="form-check-label" for="recuerdame">Recordarme</label>
                         </div>
                         <button type="submit" class="btn btn-primary" id="ingresar">Ingresar</button>
                     </form>
                     <br>
-                    <small>¿No tienes cuenta? <a href="{% url 'signup' %}">Regístrate</a></small>
+                    <small>¿No tiene cuenta? <a href="{% url 'signup' %}">Regístrese</a></small>
                     {% if messages %}
                     <ul class="messages">
                         {% for message in messages %}
