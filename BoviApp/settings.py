@@ -19,13 +19,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-nr2j^o2irn(8oa3en(%$0$k58_qifn%^aiuvq3%$vey=(j+f@n'
-with open('/home/ubuntu/BoviApp/DJANGO_SECRET_KEY') as f:
+with open('/home/judelgadoc/Projects/BoviApp/DJANGO_SECRET_KEY') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["ec2-35-174-15-26.compute-1.amazonaws.com", "3.80.28.59"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'BoviApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-with open('/home/ubuntu/BoviApp/DB_PASSWORD') as f:
+with open('/home/judelgadoc/Projects/BoviApp/DB_PASSWORD') as f:
     DB_PASSWORD = f.read().strip()
 
 

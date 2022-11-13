@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BootStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/index.css'%}">
+    <link rel="icon" href="{% static 'img/boviapp_logo_secondary.png' %}" type="image/png">
+    <title>BoviApp</title>
+</head>
+<body>
+  <!-- Barra de navegacion -->
+  {% include 'main/navbar.html' %}
+    
+              
+      <!-- Tarjetas Custom -->
+      <div class="container px-4 py-1" id="ventajas">
+        <h2 class="pb-2 border-bottom border-dark">Ventajas de BoviApp</h2>
+    
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-1">
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image:url('{% static "img/ganadero_1.jpg" %}');">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Gratis, y siempre con usted</h3>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto">
+                    <img src="{% static 'img/boviapp_logo_secondary.png'%}" alt="Boviapp" width="32" height="32" class="rounded-circle border border-white">
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('{% static "img/ganadero_2.jpg"%}');">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Administre su ganado, desde cualquier lugar</h3>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto">
+                    <img src="{% static 'img/boviapp_logo_secondary.png'%}" alt="BoviApp" width="32" height="32" class="rounded-circle border border-white">
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('{% static "img/ganadero_3.jpg"%}');">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white">
+                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Busque el ganado que necesite a un par de <em>clicks</em> de distancia</h3>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto">
+                    <img src="{% static 'img/boviapp_logo_secondary.png'%}" alt="Boviapp" width="32" height="32" class="rounded-circle border border-white">
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Servicios que ofrece -->
+      <div class="container px-4 py-5">
+        <h2 class="pb-2 border-bottom border-dark" id="servicios">Servicios Disponibles</h2>
+    
+        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+          <div class="d-flex flex-column align-items-start gap-2">
+            <h3 class="fw-bold">El futuro del manejo del ganado está aquí para ayudarle</h3>
+            <p class="text-muted">Atrás quedó la época en donde los regístros de ganado se llevaban en papel y lápiz, con la seguridad que nuestros servicios ofrecen, olvide la pérdida de información sobre su ganado. Entre a nuestra comunidad y pruebe</p>
+            {% if email_f %}
+            {% else %}
+            <a href="{% url 'signup' %}" class="btn btn-primary btn-lg">Regístrese</a>
+            {% endif %}
+            
+          </div>
+          <div class="row row-cols-1 row-cols-sm-2 g-4">
+            <div class="d-flex flex-column gap-2">
+              <div
+                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <svg class="bi" width="1em" height="1em">
+                  <use xlink:href="#collection" />
+                </svg>
+              </div>
+              <h4 class="fw-semibold mb-0">Manejo de información</h4>
+              <p class="text-muted">Guarde toda la información de su ganado, cabeza por cabeza</p>
+            </div>
+    
+            <div class="d-flex flex-column gap-2">
+              <div
+                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <svg class="bi" width="1em" height="1em">
+                  <use xlink:href="#gear-fill" />
+                </svg>
+              </div>
+              <h4 class="fw-semibold mb-0">Contacto con interesados</h4>
+              <p class="text-muted">Encuentre personas interesadas en su ganado</p>
+            </div>
+    
+            <div class="d-flex flex-column gap-2">
+              <div
+                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <svg class="bi" width="1em" height="1em">
+                  <use xlink:href="#speedometer" />
+                </svg>
+              </div>
+              <h4 class="fw-semibold mb-0">Administración por finca o hato</h4>
+              <p class="text-muted">Si usted es administrador de distintas fincas o dueño de distintas fincas, Puede ver por separado su ganado</p>
+            </div>
+    
+            <div class="d-flex flex-column gap-2">
+              <div
+                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <svg class="bi" width="1em" height="1em">
+                  <use xlink:href="#table" />
+                </svg>
+              </div>
+              <h4 class="fw-semibold mb-0">Búsquedas personalizadas</h4>
+              <p class="text-muted">¿Está buscando una raza de ganado específica o en un lugar específico?, con las búsquedas personalizadas podrá filtrar por estas y más características según su interés</p>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+    <!-- Js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
+    crossorigin="anonymous"></script> 
+</body>
+</html>
