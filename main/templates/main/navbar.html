@@ -21,10 +21,10 @@
     <div class="col-md-3 text-end">
       {% if user.is_authenticated %}
       
-      <button type="button" class="btn btn-outline-primary me-2" id="Salir" onclick="location.href='logout'">Cerrar sesión</button>
+      <button type="button" class="btn btn-outline-primary me-2" id="Salir" onclick="location.href='/logout'">Cerrar sesión</button>
       {% else %}
-       <button type="button" class="btn btn-outline-primary me-2" id="Entrar" onclick="location.href='login'">Iniciar sesión</button>
-       <button type="button" class="btn btn-primary" id="Registro" onclick="location.href='signup'">Regístrarse</button> 
+       <button type="button" class="btn btn-outline-primary me-2" id="Entrar" onclick="location.href='/login'">Iniciar sesión</button>
+       <button type="button" class="btn btn-primary" id="Registro" onclick="location.href='/signup'">Regístrarse</button> 
       {% endif %}
     </div>
   </header>

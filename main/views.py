@@ -49,6 +49,9 @@ def signup(request):
 
 
 def new_cattle(request):
+    if not request.user.is_authenticated or Usuario.objects.get(user=request.user).tipo != TipoUsuario.objects.get(pk=1):
+        # Si no inició sesión o inició como un no-ganadero, redirigir al index
+        return HttpResponseRedirect('/')
     if request.method == "POST":
         vaquita = CabezaGanado(customer_name=request.POST['inputCustomerName'],
                                peso_kg=float(request.POST['inputWeight']),
@@ -76,3 +79,13 @@ def new_estate(request):
         finca.save()
     context = {'temp': 1}
     return render(request, 'main/new_estate.html', context)
+
+
+def view_estate(request, estate_id):
+    if not request.user.is_authenticated or Usuario.objects.get(user=request.user).tipo != TipoUsuario.objects.get(pk=1):
+        # Si no inició sesión o inició como un no-ganadero, redirigir al index
+        return HttpResponseRedirect('/')
+    finca = Finca.objects.get(usuario=Usuario.objects.get(user=request.user), pk=estate_id)
+    vaquitas = GanadoFinca.objects.all().filter(finca=estate_id)
+    context = {"finca": finca, "vaquitas": vaquitas}
+    return render(request, 'main/view_estate.html', context)

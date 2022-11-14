@@ -1,0 +1,51 @@
+{% extends 'main/base_generic.html' %}
+{% load static %}
+
+{% block title %}{{ finca.nombre_finca }}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block content %}            
+
+
+
+<div class="d-flex flex-column align-items-center justify-content-center" style="height: 90%;">
+    <h2 class="p-4">{{ finca.nombre_finca }}</h2>
+    <div class="container-sm border rounded form-inline card">
+        <div class="card-body">
+            Dirección: {{ finca.direccion }}
+            <br>
+            Teléfono: {{ finca.telefono }}
+            <br>
+            Dirección de persona encargada: {{ finca.direccion_encargado }}
+        </div>
+    </div>
+    <br>
+    <div class="container-sm card">
+        <table class="table table-responsive-md table-hover table-bordered">
+            <caption>Listado de ganado en {{ finca.nombre_finca }}</caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cabeza</th>
+                <th scope="col">Lote</th>
+                <th scope="col">Potrero</th>
+              </tr>
+            </thead>
+            <tbody> 
+                {% for i in vaquitas %} 
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td><!--Link a hoja de vida de la vaquita--><a href="#">{{ i.id }}</a></td>
+                    <td>{{ i.lote }}</td>
+                    <td>{{ i.potrero }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+
+{% endblock %}
