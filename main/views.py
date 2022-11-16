@@ -1,16 +1,19 @@
 from django.contrib import messages
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+
 from .models import *
 
 # Create your views here.
-
 def index(request):
-    context = {'user': request.user}
-    return render(request, 'main/index.html', context)
-
+    if request.user.is_authenticated:
+        context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user),'breeds':RazaGanado.objects.all()}
+    else:
+        context = {'user':request.user}
+    return render(request, 'main/index.html', context) 
+    
 
 def our_login(request):
     if request.method == "POST":
@@ -76,3 +79,29 @@ def new_estate(request):
         finca.save()
     context = {'temp': 1}
     return render(request, 'main/new_estate.html', context)
+
+def buscar_vacas(request):
+    razas = request.POST.get('raza')
+    ganado=CabezaGanado.objects.filter(raza=razas)
+    # ganado=CabezaGanado.objects.all()
+    return render(request,"main/busqueda.html",{"vacas":ganado})
+
+def editar(request):
+    context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user)}
+    return render(request, 'main/actualizar.html', context)
+def actualizar(request):
+    if request.method == "POST":
+            user = User(username=request.POST['inputEmail'],
+                        first_name=request.POST['inputFirstName'],
+                        last_name=request.POST['inputLastName'],
+                        email=request.POST['inputEmail']
+            )
+            user.set_password(request.POST['inputPassword'])
+            user.save()
+            usuario = Usuario(user=user,
+                            tipo=TipoUsuario.objects.get(pk=int(request.POST['inputType'])),
+                            direccion=request.POST['inputAddress'],
+                            telefono=request.POST['inputPhone'])
+            usuario.save()
+            return HttpResponseRedirect('/') ## Aquí va el url del index según urls.py, 
+    return render(request, 'main/signup.html', {'temp': 1})

@@ -73,4 +73,24 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
     width: 3rem;
     height: 3rem;
   }
-          
+  h5 {
+    font-weight: normal;
+    font-size: 3em;
+    font-family: serif;
+    text-transform: uppercase;
+    }  
+    #busqueda{
+      background:white;
+      display: flex;
+      height: 50vh;
+    }
+    #perfil{
+      background:white;
+      display: flex;
+      height: 50vh;
+    }
+    #tabla{
+      display: block !important;
+      overflow-x: auto !important;
+      width: 100% !important;
+    }

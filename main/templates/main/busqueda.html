@@ -1,0 +1,40 @@
+{% extends 'main/base_generic.html' %}
+{% load static %}
+
+{% block title %}Busqueda{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="container" >
+    <div class="row-cols-auto">
+      <div class="col-3 ">
+      </div>
+      <div class="col-6 ">
+        <table class="table-danger  table-responsive table-striped table-hover ">
+          <thead>
+            <tr>
+              <th scope="col">Tipo</th>
+              <th scope="col">Peso</th>
+              <th scope="col">Fecha de nacimiento</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for ganado in vacas %}
+            <tr>
+              <th scope="row">{{ganado.tipo.nombre_tipo}}</th>
+              <td>{{ganado.peso_kg}}</td>
+              <td>{{ganado.fecha_nacimiento}}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="col-3">
+      </div>
+    </div>
+      
+  </div>
+{% endblock %}

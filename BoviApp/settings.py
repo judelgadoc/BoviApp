@@ -18,9 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-nr2j^o2irn(8oa3en(%$0$k58_qifn%^aiuvq3%$vey=(j+f@n'
-with open('/home/judelgadoc/Projects/BoviApp/DJANGO_SECRET_KEY') as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = 'django-insecure-nr2j^o2irn(8oa3en(%$0$k58_qifn%^aiuvq3%$vey=(j+f@n'
+# with open('/home/judelgadoc/Projects/BoviApp/DJANGO_SECRET_KEY') as f:
+#     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -74,8 +74,8 @@ WSGI_APPLICATION = 'BoviApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-with open('/home/judelgadoc/Projects/BoviApp/DB_PASSWORD') as f:
-    DB_PASSWORD = f.read().strip()
+# with open('/home/judelgadoc/Projects/BoviApp/DB_PASSWORD') as f:
+#     DB_PASSWORD = f.read().strip()
 
 
 DATABASES = {
@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'boviappdb',
         'USER': 'admin',
-        'PASSWORD': DB_PASSWORD,
+        'PASSWORD': 'ingesoft2_2022-02',
         'HOST': 'boviappdb.cnv96mbiiojo.us-east-1.rds.amazonaws.com',
         'PORT': 3306
     }
