@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- BootStrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" 
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/index.css'%}">
+        <link rel="icon" href="{% static 'img/boviapp_logo_secondary.png' %}" type="image/png">
+        <title>BoviApp</title>
+    </head>
+<body>
+    {% include 'main/navbar.html' %}
+    
+    {% for finca in fincas %}
+        <p><span>Nombre de la finca</span> <br> {{finca.nombre_finca}}</p>
+        <p><span>Direccion:</span> <br> {{finca.direccion}}</p>
+        <p><span>Telefono:</span> <br> {{finca.telefono}}</p>
+        <p><span>Direccion del encargado:</span> <br> {{finca.direccion_encargado}}</p>
+        <p><span>Quien sos:</span> <br> {{finca.usuario_id}}</p>
+    {% endfor %}
+</body>
+</html>

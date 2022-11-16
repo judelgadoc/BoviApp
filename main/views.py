@@ -5,6 +5,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import *
 
+from django.views.generic import ListView, DetailView 
+from django.urls import reverse
+from django.contrib.messages.views import SuccessMessageMixin
+from django import forms
+
 # Create your views here.
 
 def index(request):
@@ -89,3 +94,13 @@ def view_estate(request, estate_id):
     vaquitas = GanadoFinca.objects.all().filter(finca=estate_id)
     context = {"finca": finca, "vaquitas": vaquitas}
     return render(request, 'main/view_estate.html', context)
+
+def farm(request):
+    lista_contexto = []
+    for finca in Finca.objects.all().filter(usuario_id=16): #Dummy variable
+        lista_contexto.append(finca)
+    context = {
+        "fincas" : lista_contexto
+    }
+    print("Dict")
+    return render(request, 'main/farm.html', context)
