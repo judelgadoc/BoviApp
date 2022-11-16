@@ -16,13 +16,25 @@
     </head>
 <body>
     {% include 'main/navbar.html' %}
-    
-    {% for finca in fincas %}
-        <p><span>Nombre de la finca</span> <br> {{finca.nombre_finca}}</p>
-        <p><span>Direccion:</span> <br> {{finca.direccion}}</p>
-        <p><span>Telefono:</span> <br> {{finca.telefono}}</p>
-        <p><span>Direccion del encargado:</span> <br> {{finca.direccion_encargado}}</p>
-        <p><span>Quien sos:</span> <br> {{finca.usuario_id}}</p>
-    {% endfor %}
+    <form>
+        <table>
+            <th>Nombre de la finca</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Direccion del encargado</th>
+            <th>Detalles</th>
+            {% for finca in fincas %}
+            <tr>
+                <td> {{finca.nombre_finca}} </td>
+                <td> {{finca.direccion}} </td>
+                <td> {{finca.telefono}} </td>
+                <td> {{finca.direccion_encargado}} </td>
+                <input type="hidden" id="IdFinca" name="IdFinca" value={{ finca.id }}>
+                <td> <input type="submit" value="Ir"> </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+    {% include 'main/footer.html' %}
 </body>
 </html>

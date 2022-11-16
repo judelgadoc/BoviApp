@@ -1,0 +1,23 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: end;
+    margin-left: 50%;
+    flex-wrap: nowrap;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    flex: 1 1 auto;
+}
+
+ul > li {
+    width: 100px
+}
