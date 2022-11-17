@@ -1,0 +1,36 @@
+{% extends 'main/base_generic.html' %}
+{% load static %}
+
+{% block title %}Hoja de vida{% endblock %}
+
+
+{% block content %}
+    <form>
+        <div class="d-flex flex-column align-items-center" style="height: 90%;">
+        <div class="container-sm border card">
+        <table class="table table-responsive-md table-hover table-bordered">
+            <th>ID</th>
+            <th>Raza</th>
+            <th>Dueno</th>
+            <th>Peso (en kg) </th>
+            <th>Fecha de nacimiento</th>
+            <th>Tipo de produccion</th>            
+            <tr>
+                <td> {{ datos_vaca.id }} </td>
+                <td> {{ nombre_raza}} </td>
+                <td> {{ datos_vaca.customer_name }} </td>
+                <td> {{ datos_vaca.peso_kg }} </td>
+                <td> {{ datos_vaca.fecha_nacimiento }} </td>
+                <td> {{ tipo_ganado }} </td>
+                <input type="hidden" id="Nombre" name="Nombre" value={{ datos_vaca.customer_name }}>
+                <td> <input type="submit" value="Ir" class="btn btn-info"> </td>
+                <!--<td><a href="../owner_info">
+                    <button type="button"  class="btn btn-info">Detalles</button>
+                    </a> 
+                </td> -->
+            </tr>
+        </table>
+        </div>
+    </div>
+    </form>
+{% endblock %}
