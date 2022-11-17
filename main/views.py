@@ -1,12 +1,12 @@
 from django.contrib import messages
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
-
 from .models import *
 
 # Create your views here.
+
 def index(request):
     if request.user.is_authenticated:
         context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user),'breeds':RazaGanado.objects.all()}
@@ -105,6 +105,17 @@ def view_estate(request, estate_id):
     return render(request, 'main/view_estate.html', context)
 
 
+def cattle_info(request, cattle_id=5):
+    lista_contexto = []
+    cabeza_de_ganado = CabezaGanado.objects.get(id=cattle_id)
+    context = {
+        "datos_vaca" : cabeza_de_ganado,
+        "nombre_raza" : cabeza_de_ganado.raza.nombre_raza,
+        "tipo_ganado" : cabeza_de_ganado.tipo.nombre_tipo
+    }
+    return render(request, "main/cattle_info.html", context)
+
+
 def my_estates(request):
     estates = Finca.objects.all().filter(usuario=Usuario.objects.get(user=request.user))
     context = {'estates': estates}
@@ -134,6 +145,3 @@ def actualizar(request):
     context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user)}    
     return render(request, 'main/actualizar.html',context)
 
-
-def cattle_info(request):
-    return HttpResponseRedirect('/')
