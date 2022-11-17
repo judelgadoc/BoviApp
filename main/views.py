@@ -89,19 +89,13 @@ def buscar_vacas(request):
 def editar(request):
     context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user)}
     return render(request, 'main/actualizar.html', context)
+
 def actualizar(request):
     if request.method == "POST":
-            user = User(username=request.POST['inputEmail'],
-                        first_name=request.POST['inputFirstName'],
-                        last_name=request.POST['inputLastName'],
-                        email=request.POST['inputEmail']
-            )
-            user.set_password(request.POST['inputPassword'])
-            user.save()
-            usuario = Usuario(user=user,
-                            tipo=TipoUsuario.objects.get(pk=int(request.POST['inputType'])),
-                            direccion=request.POST['inputAddress'],
-                            telefono=request.POST['inputPhone'])
-            usuario.save()
-            return HttpResponseRedirect('/') ## Aquí va el url del index según urls.py, 
-    return render(request, 'main/signup.html', {'temp': 1})
+        request.user.first_name=request.POST['inputFirstName']
+        request.user.save()
+        usuario=Usuario.objects.get(user=request.user)
+        usuario.direccion=request.POST['inputAddress']
+        usuario.save()
+        return HttpResponseRedirect('/') ## Aquí va el url del index según urls.py, 
+    return render(request, 'main/index.html', {'temp': 1})

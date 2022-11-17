@@ -9,21 +9,21 @@
 
 {% block content %}
 <div class="d-flex flex-column align-items-center justify-content-center" style="height: 90%;">
-    <h1 class="p-4">Esta es su informacion, Altere los capos que desee</h1>
+    <h1 class="p-4">Esta es su informacion, cambie lo que necesite</h1>
     <div class="container-sm border border-primary rounded form-inline">
         <form action = "{% url 'actualizar' %}" method = "POST" >
             {% csrf_token %}
             <div class="form-group">
                 <label for="idFirstName">Nombres</label>
-                <input type="text" class="form-control" id="idFirstName" name="inputFirstName" placeholder="{{user.first_Name}}" aria-describedby="help" required>
+                <input type="text" class="form-control" id="idFirstName" name="inputFirstName" value="{{request.user.first_name}}" aria-describedby="help" required>
             </div>
             <div class="form-group">
                 <label for="idLastName">Apellidos</label>
-                <input type="text" class="form-control" id="idLastName" name="inputLastName" placeholder="Marín" aria-describedby="help" required>
+                <input type="text" class="form-control" id="idLastName" name="inputLastName" value="{{request.user.last_name}}"  aria-describedby="help" required>
             </div>
             <div class="form-group">
                 <label for="idEmail">Correo Electrónico</label>
-                <input type="email" class="form-control" id="idEmail" name="inputEmail" placeholder="PlinioOlivoMarin@ejemplo.com" aria-describedby="help" required>
+                <input type="email" class="form-control" id="idEmail" name="inputEmail" value="{{user.get_username}}" aria-describedby="help" required>
             </div>
             <div class="form-group">
                 <label for="idPassword">Contraseña</label>
@@ -31,12 +31,12 @@
             </div>
             <div class="form-group">
                 <label for="idPhone">Teléfono</label>
-                <input type="text" class="form-control" id="idPhone" name="inputPhone" placeholder="3130000000" aria-describedby="help" pattern="(3[0-9]{9})|(60[1-8][0-9]{7})">
+                <input type="text" class="form-control" id="idPhone" name="inputPhone" value="{{usuario.telefono}}" aria-describedby="help" pattern="(3[0-9]{9})|(60[1-8][0-9]{7})">
             </div>
             <div class="form-group">
                 <label id="idAddress">Dirección</label>
                 <input type="text" class="form-control" id="idAddress" name="inputAddress" 
-                placeholder="KR 0 # 0 - 45" aria-describedby="help" pattern="(Autopista|Avenida|Avenida Calle|Avenida Carrera|Avenida|Carrera|Calle|Carrera|Circunvalar|Diagonal|Kilometro|Transversal|AUTOP|AV|AC|AK|CL|KR|CCV|DG|KM|TV)(\s)?([a-zA-Z]{0,15}|[0-9]{1,3})(\s)?[a-zA-Z]?(\s)?(bis)?(\s)?(Este|Norte|Occidente|Oeste|Sur)?(\s)?(#(\s)?[0-9]{1,2}(\s)?[a-zA-Z]?(\s)?(bis)?(\s)?(Este|Norte|Occidente|Oeste|Sur)?(\s)?(-)?(\s)?[0-9]{1,3}(\s)?(Este|Norte|Occidente|Oeste|Sur)?)?((\s)?(Agrupación|Altillo|Apartamento|Apartamento Sótano|Barrio|Bloque|Bodega|Cabecera Municipal|Callejón|Camino|Carretera|Casa|Caserio|Célula|Centro|Centro Comercial|Centro Urbano|Circular|Condominio|Conjunto|Consultorio|Corregimiento|Deposito|Deposito |Sótano|Edificio|Entrada|Esquina|Etapa|Finca|Garaje|Garaje Sótano|Grada|Inferior|Inspección de Policia|Interior|Kilometro|Local|Local Mezzanine|Local Sótano|Lote|Manzana|Manzanita|Mejora|Mezzanine|Módulo|Municipio|Núcleo|Oficina|Oficina Sótano|Parcela|Parcelación|Pasaje|Penthouse|Piso|Porteria|Predio|Principal|Puente|Quebrada|Salon|Sector|Semisótano|Suite|Supermanzana|Terraza|Torre|Troncal|Unidad|Urbanización|Vereda|Via|Zona|AGN|AL|APTO|AS|BR|BL|BG|CM|CLJ|CN|CT|CA|CAS|CEL|CE|CECO|CEUR|CIR|CDM|CONJ|CS|CO|DP|DS|ED|EN|ESQ|ET|FCA|GJ|GS|GR|INF|IP|IN|KM|LC|LM|LS|LT|MZ|MZTA|MJ|MN|MD|MUN|NCO|OF|OS|PA|PCN|PSJ|PH|PI|PT|PD|PPAL|PN|QDA|SA|SEC|SS|SU|SMZ|TZ|TO|TRL|UN|URB|VDA|VIA|ZN)?(\s)?[1-9][0-9]{0,3})*">
+                value="{{usuario.direccion}}" aria-describedby="help" pattern="(Autopista|Avenida|Avenida Calle|Avenida Carrera|Avenida|Carrera|Calle|Carrera|Circunvalar|Diagonal|Kilometro|Transversal|AUTOP|AV|AC|AK|CL|KR|CCV|DG|KM|TV)(\s)?([a-zA-Z]{0,15}|[0-9]{1,3})(\s)?[a-zA-Z]?(\s)?(bis)?(\s)?(Este|Norte|Occidente|Oeste|Sur)?(\s)?(#(\s)?[0-9]{1,2}(\s)?[a-zA-Z]?(\s)?(bis)?(\s)?(Este|Norte|Occidente|Oeste|Sur)?(\s)?(-)?(\s)?[0-9]{1,3}(\s)?(Este|Norte|Occidente|Oeste|Sur)?)?((\s)?(Agrupación|Altillo|Apartamento|Apartamento Sótano|Barrio|Bloque|Bodega|Cabecera Municipal|Callejón|Camino|Carretera|Casa|Caserio|Célula|Centro|Centro Comercial|Centro Urbano|Circular|Condominio|Conjunto|Consultorio|Corregimiento|Deposito|Deposito |Sótano|Edificio|Entrada|Esquina|Etapa|Finca|Garaje|Garaje Sótano|Grada|Inferior|Inspección de Policia|Interior|Kilometro|Local|Local Mezzanine|Local Sótano|Lote|Manzana|Manzanita|Mejora|Mezzanine|Módulo|Municipio|Núcleo|Oficina|Oficina Sótano|Parcela|Parcelación|Pasaje|Penthouse|Piso|Porteria|Predio|Principal|Puente|Quebrada|Salon|Sector|Semisótano|Suite|Supermanzana|Terraza|Torre|Troncal|Unidad|Urbanización|Vereda|Via|Zona|AGN|AL|APTO|AS|BR|BL|BG|CM|CLJ|CN|CT|CA|CAS|CEL|CE|CECO|CEUR|CIR|CDM|CONJ|CS|CO|DP|DS|ED|EN|ESQ|ET|FCA|GJ|GS|GR|INF|IP|IN|KM|LC|LM|LS|LT|MZ|MZTA|MJ|MN|MD|MUN|NCO|OF|OS|PA|PCN|PSJ|PH|PI|PT|PD|PPAL|PN|QDA|SA|SEC|SS|SU|SMZ|TZ|TO|TRL|UN|URB|VDA|VIA|ZN)?(\s)?[1-9][0-9]{0,3})*">
             </div>
             <div>
                 <h6>Soy:</h6>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Registrarse</button>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
         <br>
         <small>¿Ya tiene una cuenta? <a href="{% url 'our_login' %}">Iniciar sesión</a></small>
