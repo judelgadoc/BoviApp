@@ -20,18 +20,22 @@
         <table class="table">
             <!-- id | raza_id | customer_name    | peso_kg | fecha_nacimiento | tipo_id -->
             <th>ID</th>
-            <th>ID raza</th>
+            <th>Raza</th>
             <th>Dueno</th>
             <th>Peso (en kg) </th>
             <th>Fecha de nacimiento</th>
             <th>Tipo</th>            
             <tr>
                 <td> {{ datos_vaca.id }} </td>
-                <td> {{ datos_vaca.raza_id }} </td>
+                <td> {{ nombre_raza}} </td>
                 <td> {{ datos_vaca.customer_name }} </td>
                 <td> {{ datos_vaca.peso_kg }} </td>
                 <td> {{ datos_vaca.fecha_nacimiento }} </td>
                 <td> {{ datos_vaca.tipo_id }} </td>
+                <td><a href="https://paypal.me/boviapp?country.x=CO&locale.x=es_XC">
+                    <button type="button"  class="btn btn-info">Comprar</button>
+                    </a>
+                </td>
             </tr>
         </table>
     </form>
