@@ -95,6 +95,16 @@ def view_estate(request, estate_id):
     context = {"finca": finca, "vaquitas": vaquitas}
     return render(request, 'main/view_estate.html', context)
 
+def cattle_info(request, cattle_id=5):
+    lista_contexto = []
+    cabeza_de_ganado = CabezaGanado.objects.get(id=cattle_id)
+    context = {
+        "datos_vaca" : cabeza_de_ganado,
+        "nombre_raza" : cabeza_de_ganado.raza.nombre_raza,
+        "xyzw" : cattle_id
+    }
+    return render(request, "main/cattle_info.html", context)
+
 def farm(request):
     lista_contexto = []
     for finca in Finca.objects.all().filter(usuario_id=16): #Dummy variable

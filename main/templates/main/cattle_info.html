@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- BootStrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" 
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/index.css'%}">
+        <link rel="icon" href="{% static 'img/boviapp_logo_secondary.png' %}" type="image/png">
+        <title>BoviApp</title>
+    </head>
+<body>
+    {% include 'main/navbar.html' %}
+    <form>
+        <table class="table">
+            <!-- id | raza_id | customer_name    | peso_kg | fecha_nacimiento | tipo_id -->
+            <th>ID</th>
+            <th>ID raza</th>
+            <th>Dueno</th>
+            <th>Peso (en kg) </th>
+            <th>Fecha de nacimiento</th>
+            <th>Tipo</th>            
+            <tr>
+                <td> {{ datos_vaca.id }} </td>
+                <td> {{ datos_vaca.raza_id }} </td>
+                <td> {{ datos_vaca.customer_name }} </td>
+                <td> {{ datos_vaca.peso_kg }} </td>
+                <td> {{ datos_vaca.fecha_nacimiento }} </td>
+                <td> {{ datos_vaca.tipo_id }} </td>
+            </tr>
+        </table>
+    </form>
+    {% include 'main/footer.html' %}
+</body>
+</html>
