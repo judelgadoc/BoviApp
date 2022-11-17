@@ -101,9 +101,12 @@ def cattle_info(request, cattle_id=5):
     context = {
         "datos_vaca" : cabeza_de_ganado,
         "nombre_raza" : cabeza_de_ganado.raza.nombre_raza,
-        "xyzw" : cattle_id
+        "tipo_ganado" : cabeza_de_ganado.tipo.nombre_tipo
     }
     return render(request, "main/cattle_info.html", context)
+
+def owner_info(request):
+    return render(request, "main/owner_info.html")
 
 def farm(request):
     lista_contexto = []
