@@ -92,10 +92,16 @@ def editar(request):
 
 def actualizar(request):
     if request.method == "POST":
-        request.user.first_name=request.POST['inputFirstName']
-        request.user.save()
-        usuario=Usuario.objects.get(user=request.user)
-        usuario.direccion=request.POST['inputAddress']
-        usuario.save()
-        return HttpResponseRedirect('/') ## Aquí va el url del index según urls.py, 
-    return render(request, 'main/index.html', {'temp': 1})
+        if request.user.is_authenticated:
+            request.user.first_name=request.POST['inputFirstName']
+            request.user.last_name=request.POST['inputLastName']
+            request.user.set_password(request.POST['inputPassword'])
+            request.user.save()
+            usuario=Usuario.objects.get(user=request.user)
+            usuario.direccion=request.POST['inputAddress']
+            usuario.tipo=TipoUsuario.objects.get(pk=int(request.POST['inputType']))
+            usuario.telefono=request.POST['inputPhone']
+            usuario.save()
+            return HttpResponseRedirect('/') ## Aquí va el url del index según urls.py, 
+    context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user)}    
+    return render(request, 'main/actualizar.html',context)
