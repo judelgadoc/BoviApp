@@ -59,9 +59,16 @@ def new_cattle(request):
                                tipo=TipoGanado.objects.get(pk=int(request.POST['inputType'])),
                                raza=RazaGanado.objects.get(pk=int(request.POST['inputBreed'])))
         vaquita.save()
+        associated_estate = GanadoFinca(cabeza_ganado=vaquita,
+                                        finca=Finca.objects.get(pk=int(request.POST['inputEstate'])),
+                                        lote=int(request.POST['inputLot']),
+                                        potrero=int(request.POST['inputPaddock']))
+        associated_estate.save()
     breeds = RazaGanado.objects.all()
     cow_types = TipoGanado.objects.all()
-    context = {'breeds': breeds, 'cow_types': cow_types}
+    estates = Finca.objects.all().filter(usuario=Usuario.objects.get(user=request.user))
+    print(estates)
+    context = {'breeds': breeds, 'cow_types': cow_types, 'estates': estates}
     return render(request, 'main/new_cattle.html', context)
 
 

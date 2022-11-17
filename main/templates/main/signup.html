@@ -3,14 +3,10 @@
 
 {% block title %}Registrarse{% endblock %}
 
-{% block styles %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
-{% endblock %}
-
 {% block content %}
 <div class="d-flex flex-column align-items-center justify-content-center" style="height: 90%;">
     <h2 class="p-4">¡Regístrese!</h2>
-    <div class="container-sm border border-primary rounded form-inline">
+    <div class="container-sm rounded form-inline card">
         <form action = "{% url 'signup' %}" method = "POST" >
             {% csrf_token %}
             <div class="form-group">
