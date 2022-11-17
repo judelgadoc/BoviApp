@@ -1,13 +1,13 @@
 {% extends 'main/base_generic.html' %}
 {% load static %}
 
-{% block title %}Actualiza informacion{% endblock %}
+{% block title %}Actualiza información{% endblock %}
 
 
 {% block content %}
 <div class="d-flex flex-column align-items-center justify-content-center" style="height: 90%;">
-    <h1 class="p-4">Esta es su informacion, cambie lo que necesite</h1>
-    <div class="container-sm border border-primary rounded form-inline">
+    <h1 class="p-4">Esta es su información, cambie lo que necesite</h1>
+    <div class="container-sm border rounded form-inline card">
         <form action = "{% url 'actualizar' %}" method = "POST" >
             {% csrf_token %}
             <div class="form-group">
@@ -49,8 +49,6 @@
             <br>
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
-        <br>
-        <small>¿Ya tiene una cuenta? <a href="{% url 'our_login' %}">Iniciar sesión</a></small>
     </div>
 </div>
 {% endblock %}

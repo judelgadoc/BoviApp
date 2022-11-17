@@ -95,6 +95,22 @@ def new_estate(request):
     return render(request, 'main/new_estate.html', context)
 
 
+def view_estate(request, estate_id):
+    if not request.user.is_authenticated or Usuario.objects.get(user=request.user).tipo != TipoUsuario.objects.get(pk=1):
+        # Si no inició sesión o inició como un no-ganadero, redirigir al index
+        return HttpResponseRedirect('/')
+    finca = Finca.objects.get(usuario=Usuario.objects.get(user=request.user), pk=estate_id)
+    vaquitas = GanadoFinca.objects.all().filter(finca=estate_id)
+    context = {"finca": finca, "vaquitas": vaquitas}
+    return render(request, 'main/view_estate.html', context)
+
+
+def my_estates(request):
+    estates = Finca.objects.all().filter(usuario=Usuario.objects.get(user=request.user))
+    context = {'estates': estates}
+    return render(request, 'main/my_estates.html', context)
+
+
 def buscar_vacas(request):
     razas = request.POST.get('raza')
     ganado=CabezaGanado.objects.filter(raza=razas)
@@ -117,3 +133,7 @@ def actualizar(request):
             return HttpResponseRedirect('/') ## Aquí va el url del index según urls.py, 
     context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user)}    
     return render(request, 'main/actualizar.html',context)
+
+
+def cattle_info(request):
+    return HttpResponseRedirect('/')
