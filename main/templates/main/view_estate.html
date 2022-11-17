@@ -37,7 +37,7 @@
                 {% for i in vaquitas %} 
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td><!--Link a hoja de vida de la vaquita--><a href="#">{{ i.cabeza_ganado.id }}</a></td>
+                    <td><a href="{% url 'cattle_info' cattle_id=i.cabeza_ganado.id %}">{{ i.cabeza_ganado.id }}</a></td>
                     <td>{{ i.lote }}</td>
                     <td>{{ i.potrero }}</td>
                 </tr>

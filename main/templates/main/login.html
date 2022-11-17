@@ -14,6 +14,18 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6">
+                    <br>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <div {% if message.tags %} class="{{message.tags}} alert alert-dismissible alert-warning"{% endif %}>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <h4 class="alert-heading">¡Cuidado!</h4>
+                            <p class="mb-0">{{ message }}</p>
+                        </div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                     <form action = "{% url 'our_login' %}" method="POST">
                         {% csrf_token %}
                         <div class="mb-3 my-5">
@@ -28,20 +40,13 @@
                         <small><a href="{% url 'our_login' %}">Recuperar contraseña</a></small>
                         </div>
                         <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="recuerdame">
+                        <input type="checkbox" class="form-check-input" id="recuerdame" name="inputRememberme">
                         <label class="form-check-label" for="recuerdame">Recordarme</label>
                         </div>
                         <button type="submit" class="btn btn-primary" id="ingresar">Ingresar</button>
                     </form>
                     <br>
                     <small>¿No tiene cuenta? <a href="{% url 'signup' %}">Regístrese</a></small>
-                    {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
                 </div>
                 <div class="col-3"></div>
             </div>

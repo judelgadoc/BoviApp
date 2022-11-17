@@ -1,6 +1,4 @@
 from django.contrib import messages
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
@@ -9,7 +7,6 @@ from django.shortcuts import render
 from .models import *
 
 # Create your views here.
-
 def index(request):
     if request.user.is_authenticated:
         context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user),'breeds':RazaGanado.objects.all()}
@@ -22,13 +19,9 @@ def our_login(request):
     if request.method == "POST":
         email_f=request.POST['correo']
         password=(request.POST['contra'])
-        rememberme = request.POST.get('inputRememberme', "off")
-        print(rememberme)
         user = authenticate(username=email_f, password=password)
         if user is not None:
             login(request, user)
-            if rememberme == "off":
-                request.session.set_expiry(0)
             return HttpResponseRedirect('/')
         else:
             messages.add_message(request, level=messages.WARNING,message='Nombre de usuario o Contraseña Incorrectos')
@@ -97,6 +90,7 @@ def new_estate(request):
     context = {'temp': 1}
     return render(request, 'main/new_estate.html', context)
 
+<<<<<<< HEAD
 
 def view_estate(request, estate_id):
     if not request.user.is_authenticated or Usuario.objects.get(user=request.user).tipo != TipoUsuario.objects.get(pk=1):
@@ -106,27 +100,18 @@ def view_estate(request, estate_id):
     vaquitas = GanadoFinca.objects.all().filter(finca=estate_id)
     context = {"finca": finca, "vaquitas": vaquitas}
     return render(request, 'main/view_estate.html', context)
-
-def my_estates(request):
-    estates = Finca.objects.all().filter(usuario=Usuario.objects.get(user=request.user))
-    context = {'estates': estates}
-    return render(request, 'main/my_estates.html', context)
-
-
+=======
 def buscar_vacas(request):
     razas = request.POST.get('raza')
     ganado=CabezaGanado.objects.filter(raza=razas)
     # ganado=CabezaGanado.objects.all()
     return render(request,"main/busqueda.html",{"vacas":ganado})
 
-
 def editar(request):
-    
+    context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user)}
     return render(request, 'main/actualizar.html', context)
-
-
 def actualizar(request):
-    """ if request.method == "POST":
+    if request.method == "POST":
             user = User(username=request.POST['inputEmail'],
                         first_name=request.POST['inputFirstName'],
                         last_name=request.POST['inputLastName'],
@@ -140,12 +125,5 @@ def actualizar(request):
                             telefono=request.POST['inputPhone'])
             usuario.save()
             return HttpResponseRedirect('/') ## Aquí va el url del index según urls.py, 
-    return render(request, 'main/signup.html', {'temp': 1}) """
-    if request.method == "POST":
-        print("hola")
-        return HttpResponseRedirect('/')
-    context = {'user':request.user,'usuario':Usuario.objects.get(user=request.user)}
-    return render(request, 'main/actualizar.html', context)
-
-def cattle_info(request):
-    return HttpResponseRedirect('/')
+    return render(request, 'main/signup.html', {'temp': 1})
+>>>>>>> origin/Fredy
