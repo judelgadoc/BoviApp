@@ -7,7 +7,7 @@
 {% block content %}
 <div class="d-flex flex-column align-items-center" style="height: 90%;">
     <h1 class="p-4">Nueva finca</h1>
-    <div class="container-sm border border-primary rounded form-inline">
+    <div class="container-sm border rounded form-inline card">
         <form action = "{% url 'new_estate' %}" method = "POST" >
             {% csrf_token %}
             <div class="form-group">
