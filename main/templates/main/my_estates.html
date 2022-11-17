@@ -1,0 +1,33 @@
+{% extends 'main/base_generic.html' %}
+{% load static %}
+
+{% block title %}Mis fincas{% endblock %}
+
+
+{% block content %}
+  <div class="d-flex flex-column align-items-center" style="height: 90%;">
+    <div class="container-sm border card">
+        <h3 class="card-title">Mis fincas</h3>
+        <table class="table table-responsive-md table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Teléfono</th>
+              </tr>
+            </thead>
+            <tbody> 
+                {% for i in estates %} 
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td><a href="{% url 'view_estate' estate_id=i.id %}">{{i.nombre_finca}}</a></th>
+                  <td>{{i.direccion}}</td>
+                  <td>{{i.telefono}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+  </div>
+{% endblock %}
