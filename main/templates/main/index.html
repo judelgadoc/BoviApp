@@ -4,6 +4,7 @@
 {% block title %}BoviApp{% endblock %}
 
 
+
 {% block content %} 
 {% if user.is_authenticated %}
 <!-- aqui empieza, Busqueda por raza del animal -->
@@ -11,14 +12,13 @@
   <div class="row row-cols-1 row-cols-lg-1 align-items-stretch g-4 py-1">
     <form action="{% url 'buscar_vacas' %}" method="POST">
       {% csrf_token %}
-      <label for="busq_raza" id="title_busq_raza">Búsqueda por raza de ganado</label>
+      <label for="busq_raza" id="title_busq_raza">Busqueda por raza de ganado</label>
       <select id="busq_raza" name="raza" class="form-select" required>
           <option value="" selected disabled>--Seleccione una--</option>
           {% for i in breeds %}
           <option value="{{ i.id }}">{{ i.nombre_raza }}</option>
           {% endfor %}
       </select>
-      <br>
       <input type="submit" value="Buscar"class="btn btn-primary btn-lg">
     </form>
   </div>
