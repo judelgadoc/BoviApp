@@ -51,5 +51,24 @@
         <br>
         <small>¿Ya tiene una cuenta? <a href="{% url 'our_login' %}">Iniciar sesión</a></small>
     </div>
+    <a type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Términos y condiciones</a>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Términos y condiciones</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Al acceder al servicio proporcionado por la aplicación Boviapp acepta el decreto 1377 de 2013 y el Habeas Data en la cual sus datos personales serán recolectados, tratados y protegidos conforme a lo que dispone la ley. De acuerdo a la ley 44 de 1993 sobre los derechos de autor, todo el desarrollo realizado tanto material físico como virtual (software) están protegidos y patentados.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

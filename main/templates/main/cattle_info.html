@@ -30,7 +30,9 @@
             </tr>
         </table>
         </div>
+        {% if usuario.tipo.pk == 1 %}
         <a class="btn btn-primary" href="{% url 'update_cattle' cattle_id=datos_vaca.id %}" role="button">Editar vaca</a>
+	{% endif %}
     </div>
 
   <!-- Modal -->
